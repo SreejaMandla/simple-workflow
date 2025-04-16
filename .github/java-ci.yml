@@ -2,7 +2,8 @@ name: Basic Workflow
 
 on: 
   push:
-    branches: main
+    branches: 
+     - main
 
 jobs: 
   build:
@@ -18,8 +19,8 @@ jobs:
           java-version: '22'
           distribution: 'temurin'
 
-        -name: Compile HelloWorld
-         run: javac HelloWorld.java
+      -name: Compile HelloWorld
+       run: javac HelloWorld.java
 
-        -name: Run HelloWorld
-        run: java HelloWorld
+      -name: Run HelloWorld
+      run: java HelloWorld
