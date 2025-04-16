@@ -3,24 +3,24 @@ name: Basic Workflow
 on: 
   push:
     branches: 
-     - main
+      - main
 
 jobs: 
   build:
     runs-on: ubuntu-latest
 
-     steps:
+    steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4  
 
-      - name: Set up HelloWorld
-        uses: actions/set-up-java@v3
+      - name: Set up Java
+        uses: actions/setup-java@v3  
         with:
           java-version: '22'
           distribution: 'temurin'
 
-      -name: Compile HelloWorld
-       run: javac HelloWorld.java
+      - name: Compile HelloWorld
+        run: javac HelloWorld.java
 
-      -name: Run HelloWorld
-      run: java HelloWorld
+      - name: Run HelloWorld
+        run: java HelloWorld
