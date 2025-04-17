@@ -5,7 +5,20 @@ on:
     branches: 
       - main
   workflow_dispatch:
-
+    inputs:
+      name:
+        description: 'Person to greet'
+        required: true
+        default: 'World'
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'development'
+        type: choice
+        options:
+          - development
+          - staging
+          - production
 jobs: 
 
   test:
