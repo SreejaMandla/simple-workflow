@@ -18,6 +18,12 @@ jobs:
       - name: Save Vercel CLI
         run: echo "Vercel CLI installed" > vercel.txt
        
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: vercel-cli-status
+          path: vercel.txt
+          
   deploy:
     needs: integrate
     runs-on: ubuntu-latest
