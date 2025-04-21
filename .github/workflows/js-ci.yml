@@ -16,14 +16,16 @@ jobs:
         run: npm install -g vercel
 
       - name: Save Vercel CLI
-        run: echo "Vercel CLI installed" > vercel.txt
-       
+        run: |
+          echo "Vercel CLI installed" > vercel.txt
+          ls -l vercel.txt # Ensure the file is created
+
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: vercel-cli-status
           path: vercel.txt
-          
+
   deploy:
     needs: integrate
     runs-on: ubuntu-latest
