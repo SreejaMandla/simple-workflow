@@ -14,9 +14,24 @@ jobs:
 
       - name: Install Vercel CLI
         run: npm install -g vercel
-    
+
+      - name: Save Vercel CLI
+        run: echo "Vercel CLI installed" > vercel.txt
+       
   deploy:
-     runs-on: ubuntu-latest
-     steps:
+    needs: integrate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: vercel-cli-status
+
+      - name: Install Vercel CLI (if not present)
+        run: npm install -g vercel
+
       - name: Deploy to Vercel
-        run: vercel --prod --yes --token=${{ secrets.VERCEL_TOKEN }}  
+        run: vercel --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
